@@ -25,6 +25,8 @@ class SignUpView(View):
         password = passwordsecu
       ).save()
 
+      print(passwordsecu)
+
       return HttpResponse("signup clear!")
     
     except KeyError:
@@ -38,7 +40,8 @@ class SignInView(View):
       user = Account.objects.get(email = data['email'])
 
       if bcrypt.checkpw(data['password'].encode('utf-8'), user.password.encode('utf-8')):
-        access_token = jwt.encode({'email':data['email']}, SECRET_KEY).decode('utf-8')
+        access_token = jwt.encode({'email': user.email}, SECRET_KEY).decode('utf-8')
+        
         
         return JsonResponse({'access_token':access_token}, status=200)
       
