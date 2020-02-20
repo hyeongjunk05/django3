@@ -1,6 +1,9 @@
 import json
+import bcrypt
+import jwt
 
 from .models import Account
+from anotherstagram.settings import SECRET_KEY
 
 from django.views import View
 from django.http import HttpResponse, JsonResponse
@@ -12,10 +15,14 @@ class SignUpView(View):
     try:
       if Account.objects.filter(email=data['email']).exists():
         return HttpResponse("already exists!")
+
+      password = data['password'].encode('utf-8')
+      passwordsecu = bcrypt.hashpw(password, bcrypt.gensalt()).decode('utf-8')
+      
     
       Account(
         email = data['email'],
-        password = data['password']
+        password = passwordsecu
       ).save()
 
       return HttpResponse("signup clear!")
@@ -29,10 +36,18 @@ class SignInView(View):
 
     if Account.objects.filter(email = data['email']).exists():
       user = Account.objects.get(email = data['email'])
-      if user.password == data['password']:
-        return HttpResponse('login complete!')
-      else:
-        return HttpResponse("wrong pw!")
+
+      if bcrypt.checkpw(data['password'].encode('utf-8'), user.password.encode('utf-8')):
+        access_token = jwt.encode({'email':data['email']}, SECRET_KEY).decode('utf-8')
+        
+        return JsonResponse({'access_token':access_token}, status=200)
+      
+      return HttpResponse(status=401)
+
     return HttpResponse("what are you doin? Idiot?? signUp first!")
+      # if user.password == data['password']:
+      #   return HttpResponse('login complete!')
+      # else:
+      #   return HttpResponse("wrong pw!")
 
     
