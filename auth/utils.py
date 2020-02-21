@@ -1,8 +1,12 @@
 import jwt
-import json
+# import json
 
-from anotherstagram.settings import SECRET_KEY
 from account.models import Account
+from anotherstagram.settings import SECRET_KEY
+# import keylike
+# SECRET_KEY = keylike.SECRET_KEY
+
+# SECRET_KEY = keylike.SECRET_KEY
 
 from django.http import HttpResponse, JsonResponse
 

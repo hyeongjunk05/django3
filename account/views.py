@@ -4,6 +4,8 @@ import jwt
 
 from .models import Account
 from anotherstagram.settings import SECRET_KEY
+# import keylike
+# SECRET_KEY = keylike.SECRET_KEY
 
 from django.views import View
 from django.http import HttpResponse, JsonResponse
