@@ -12,6 +12,7 @@ class SignUpView(View):
   def post(self, request):
     data = json.loads(request.body)
 
+    # print('fdf')
     try:
       if Account.objects.filter(email=data['email']).exists():
         return HttpResponse("already exists!")
@@ -25,7 +26,7 @@ class SignUpView(View):
         password = passwordsecu
       ).save()
 
-      print(passwordsecu)
+      # print(passwordsecu)
 
       return HttpResponse("signup clear!")
     
@@ -47,7 +48,7 @@ class SignInView(View):
       
       return HttpResponse(status=401)
 
-    return HttpResponse("what are you doin? Idiot?? signUp first!")
+    return HttpResponse("what are you doin? signUp first!")
       # if user.password == data['password']:
       #   return HttpResponse('login complete!')
       # else:
