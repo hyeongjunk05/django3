@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import keylike
+
+DATABASES = keylike.DATABASES
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +29,7 @@ SECRET_KEY = '*fhq7x5=jo(w$(9@v1-b+kez-fjknuidjm$kkqai5$0#fr_6*0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -75,12 +79,23 @@ WSGI_APPLICATION = 'anotherstagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# DATABASES = {
+#     'default' : {
+#         'ENGINE': 'django.db.backends.mysql',    
+#         'NAME': 'mydatabase',                  
+#         'USER': 'root',                          
+#         'PASSWORD': '',                  
+#         'HOST': 'localhost',                     
+#         'PORT': '3306',                          
+#     }
+# }
 
 
 # Password validation

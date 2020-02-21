@@ -3,5 +3,5 @@ from django.urls import  path
 
 urlpatterns = [
 
-    path("", Comments.as_view()),
+    path("/com", Comments.as_view()),
 ]
