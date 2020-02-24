@@ -30,7 +30,7 @@ class SignUpView(View):
 
       # print(passwordsecu)
 
-      return HttpResponse("signup clear!")
+      return JsonResponse({"message":"sign-up done!"}, status=200)
     
     except KeyError:
       return HttpResponse("reenter plz")
