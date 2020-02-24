@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-import keylike
+import my_settings
 
-DATABASES = keylike.DATABASES
+DATABASES = my_settings.DATABASES
+
+SECRET_KEY = my_settings.SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*fhq7x5=jo(w$(9@v1-b+kez-fjknuidjm$kkqai5$0#fr_6*0'
+# SECRET_KEY = '*fhq7x5=jo(w$(9@v1-b+kez-fjknuidjm$kkqai5$0#fr_6*0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
